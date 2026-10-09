@@ -22,13 +22,13 @@ export default function About() {
       <section className="mx-auto max-w-[1440px] px-5 md:px-10 pb-24 md:pb-40">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
           <div className="lg:col-span-5">
-            <Reveal mask>
-              <div className="overflow-hidden">
+            <Reveal>
+              <div className="aspect-[3/4] overflow-hidden bg-[var(--cream)]">
                 <img
                   src={heroImages.about}
                   alt="ARCO studio — architectural detail"
                   loading="lazy"
-                  className="aspect-[3/4] w-full object-cover"
+                  className="h-full w-full object-cover"
                 />
               </div>
             </Reveal>

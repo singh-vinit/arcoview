@@ -91,7 +91,6 @@ export default function ProjectDetail() {
           {p.gallery.map((g, i) => (
             <Reveal
               key={g}
-              mask
               delay={(i % 2) * 100}
               className={
                 i === 0

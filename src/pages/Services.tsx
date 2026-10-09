@@ -52,13 +52,13 @@ export default function Services() {
               </Reveal>
             </div>
             <div className={`lg:col-span-7 ${i % 2 === 1 ? 'lg:order-first' : ''}`}>
-              <Reveal mask delay={100}>
-                <div className="overflow-hidden bg-[var(--cream)]">
+              <Reveal delay={100}>
+                <div className="aspect-[16/10] overflow-hidden bg-[var(--cream)]">
                   <img
                     src={s.image}
                     alt={s.title}
                     loading="lazy"
-                    className="aspect-[16/10] w-full object-cover"
+                    className="h-full w-full object-cover"
                   />
                 </div>
               </Reveal>

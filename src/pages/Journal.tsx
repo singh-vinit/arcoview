@@ -3,6 +3,9 @@ import { articles } from '../data/site';
 
 export default function Journal() {
   const [lead, ...rest] = articles;
+
+  if (!lead) return null;
+
   return (
     <div className="pt-28 md:pt-40">
       <header className="mx-auto max-w-[1440px] px-5 md:px-10">
@@ -24,13 +27,13 @@ export default function Journal() {
 
       {/* Lead article */}
       <section className="mx-auto max-w-[1440px] px-5 md:px-10 py-16 md:py-24">
-        <Reveal mask>
-          <article className="group relative cursor-pointer overflow-hidden" aria-label={lead.title}>
+        <Reveal>
+          <article className="group relative min-h-[360px] cursor-pointer overflow-hidden bg-[var(--ink)] md:min-h-[480px]" aria-label={lead.title}>
             <img
               src={lead.image.replace('w=1200', 'w=2000')}
               alt=""
               loading="lazy"
-              className="aspect-[16/9] md:aspect-[21/9] w-full object-cover transition-transform duration-1000 group-hover:scale-[1.03]"
+              className="absolute inset-0 h-full w-full object-cover transition-transform duration-1000 group-hover:scale-[1.03]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" aria-hidden="true" />
             <div className="absolute inset-x-0 bottom-0 p-6 md:p-12 text-white">

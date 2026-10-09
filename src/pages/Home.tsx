@@ -111,13 +111,13 @@ function Intro() {
           </Reveal>
         </div>
         <div className="lg:col-span-5 lg:pl-8">
-          <Reveal mask>
-            <div className="overflow-hidden">
+          <Reveal>
+            <div className="aspect-[4/5] overflow-hidden bg-[var(--cream)]">
               <img
                 src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1200&auto=format&fit=crop"
                 alt="Sunlit interior with natural materials"
                 loading="lazy"
-                className="aspect-[4/5] w-full object-cover"
+                className="h-full w-full object-cover"
               />
             </div>
           </Reveal>
