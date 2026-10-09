@@ -34,45 +34,47 @@ function Hero() {
           fetchPriority="high"
         />
       </div>
-      <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-black/30" aria-hidden="true" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/20 to-black/25" aria-hidden="true" />
 
-      <div className="relative z-10 mx-auto flex h-full max-w-[1440px] flex-col justify-end px-5 pb-24 md:px-10 md:pb-28">
-        <p
-          className="hero-line mb-6 text-xs tracking-[0.3em] uppercase text-white/70"
-        >
-          <span style={{ '--line-delay': '150ms' } as never}>Architecture · Interiors · Spaces</span>
-        </p>
-        <h1 className="font-display text-[13vw] leading-[1.02] text-white sm:text-[11vw] lg:text-[7.5rem]">
-          <span className="hero-line"><span style={{ '--line-delay': '250ms' } as never}>Architecture</span></span>
-          <span className="hero-line"><span style={{ '--line-delay': '380ms' } as never}>that feels</span></span>
-          <span className="hero-line"><span style={{ '--line-delay': '510ms' } as never}>different.</span></span>
-        </h1>
-        <div className="hero-line mt-8 max-w-md">
-          <span style={{ '--line-delay': '680ms' } as never}>
-            <p className="text-base md:text-lg text-white/80">
-              Thoughtful spaces, shaped by light, material and human experience.
+      <div className="relative z-10 mx-auto flex h-full max-w-[1440px] items-end px-5 pb-20 md:px-10 md:pb-16">
+        <div className="grid w-full items-end gap-10 md:grid-cols-[minmax(0,1fr)_minmax(260px,360px)] md:gap-16">
+          <div>
+            <p className="hero-line mb-5 text-xs tracking-[0.3em] uppercase text-white/70">
+              <span style={{ '--line-delay': '150ms' } as never}>Architecture · Interiors · Spaces</span>
             </p>
-          </span>
-        </div>
-        <div className="hero-line mt-10">
-          <span style={{ '--line-delay': '820ms' } as never} className="flex flex-wrap gap-4">
-            <Link
-              to="/projects"
-              className="inline-flex items-center justify-center bg-white px-8 py-4 text-[13px] tracking-[0.16em] uppercase text-[var(--ink)] transition-colors duration-300 hover:bg-[var(--terra)] hover:text-white"
-            >
-              Explore Projects
-            </Link>
-            <Link
-              to="/contact"
-              className="inline-flex items-center justify-center border border-white/70 px-8 py-4 text-[13px] tracking-[0.16em] uppercase text-white transition-colors duration-300 hover:bg-white hover:text-[var(--ink)]"
-            >
-              Start a Project
-            </Link>
-          </span>
+            <h1 className="font-display text-[15vw] leading-[0.95] tracking-[-0.03em] text-white sm:text-[11vw] lg:text-[7.5rem]">
+              <span className="hero-line"><span style={{ '--line-delay': '250ms' } as never}>Architecture</span></span>
+              <span className="hero-line"><span style={{ '--line-delay': '380ms' } as never}>that feels</span></span>
+              <span className="hero-line"><span style={{ '--line-delay': '510ms' } as never}>different.</span></span>
+            </h1>
+          </div>
+
+          <div className="hero-line max-w-sm md:mb-1">
+            <span style={{ '--line-delay': '680ms' } as never}>
+              <p className="max-w-xs text-base leading-relaxed text-white/80 md:text-lg">
+                Thoughtful spaces, shaped by light, material and human experience.
+              </p>
+              <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-4">
+                <Link
+                  to="/projects"
+                  className="inline-flex items-center justify-center bg-white px-7 py-3.5 text-[13px] tracking-[0.16em] uppercase text-[var(--ink)] transition-colors duration-300 hover:bg-[var(--terra)] hover:text-white"
+                >
+                  Explore Projects
+                </Link>
+                <Link
+                  to="/contact"
+                  className="arrow-link inline-flex items-center gap-2 text-[13px] tracking-[0.16em] uppercase text-white"
+                >
+                  Start a Project
+                  <span className="arrow text-base" aria-hidden="true">↗</span>
+                </Link>
+              </div>
+            </span>
+          </div>
         </div>
       </div>
 
-      <div className="absolute bottom-6 left-1/2 z-10 -translate-x-1/2 flex flex-col items-center gap-2 text-white/70">
+      <div className="absolute bottom-6 right-5 z-10 flex items-center gap-3 text-white/70 md:right-10">
         <span className="text-[10px] tracking-[0.3em] uppercase">Scroll</span>
         <span className="scroll-indicator-line block h-10 w-px bg-white/70" aria-hidden="true" />
       </div>
@@ -175,7 +177,7 @@ function Stats() {
 
 function ServicesPreview() {
   return (
-    <section className="mx-auto max-w-[1440px] px-5 md:px-10 py-20 md:py-32">
+    <section className="mx-auto max-w-[1440px] px-5 md:px-10 pt-10 pb-20 md:pt-16 md:pb-32">
       <SectionHeader label="What We Do" title="Five disciplines, one sensibility." />
       <div className="mt-12 md:mt-16">
         {services.map((s, i) => (
@@ -208,10 +210,13 @@ function ServicesPreview() {
 }
 
 function FeaturedProject() {
-  const p = projects.find((x) => x.slug === 'the-courtyard')!;
+  const p = projects.find((x) => x.slug === 'the-courtyard') ?? projects[0];
+
+  if (!p) return null;
+
   return (
     <section className="relative" aria-label="Featured project">
-      <Reveal mask className="relative h-[70vh] md:h-[85vh] overflow-hidden">
+      <Reveal className="relative h-[70vh] min-h-[520px] overflow-hidden bg-[var(--ink)] md:h-[85vh]">
         <img src={p.hero} alt="The Courtyard residence" loading="lazy" className="h-full w-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" aria-hidden="true" />
         <div className="absolute inset-x-0 bottom-0 mx-auto max-w-[1440px] px-5 md:px-10 pb-14 md:pb-20 text-white">
